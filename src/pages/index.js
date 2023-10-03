@@ -5,7 +5,6 @@ import React from "react";
 import { Mulish } from "next/font/google";
 import { Fragment } from "react";
 import HeadSEO from "@/components/HeadSEO";
-import Navbar from "@/components/Navbar";
 import CarItem from "@/components/CarItem";
 
 const inter = Mulish({ subsets: ["latin"] });
@@ -15,8 +14,7 @@ export default function Home({ cars }) {
     <Fragment>
       <HeadSEO />
       <main className={`px-16 min-h-screen bg-gray-200 ${inter.className}`}>
-        <Navbar />
-        <CarItem />
+        <CarItem cars={cars} />
       </main>
     </Fragment>
   );

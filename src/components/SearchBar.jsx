@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuery } from "@/store/features/searchSlice";
 import { FaSearch } from "react-icons/fa";
-import { MdOutlineExpandLess, MdOutlineExpandMore } from "react-icons/md";
+import { MdOutlineExpandMore } from "react-icons/md";
 
 function SearchBar() {
   const router = useRouter();
@@ -48,7 +48,7 @@ function SearchBar() {
       <div className="flex items-center">
         <span>relevance</span>
         <button>
-          <MdOutlineExpandLess  />
+          <MdOutlineExpandMore />
         </button>
       </div>
       <div className="flex items-center">

@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { Mulish } from "next/font/google";
 import CarItem from "@/components/CarItem";
-import Navbar from "@/components/Navbar";
 import HeadSEO from "@/components/HeadSEO";
 import {
   currentPage,
@@ -36,8 +35,7 @@ export default function Cars({ totalCars, page, cars, query, hitCount }) {
     <Fragment>
       <HeadSEO />
       <main className={`px-16 min-h-screen bg-gray-200 ${inter.className}`}>
-        <Navbar />
-        <CarItem />
+        <CarItem cars={cars} />
       </main>
     </Fragment>
   );

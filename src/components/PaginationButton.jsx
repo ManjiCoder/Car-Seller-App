@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 function PaginationButton({
   number,
   currentPageNo,
@@ -11,7 +9,7 @@ function PaginationButton({
     return (
       <button
         disabled={isDisable}
-        className={`grid hover:bg-blue-500 hover:text-white  place-items-center h-7 w-7 rounded-lg bg-slate-50 disabled:cursor-not-allowed shadow-lg`}
+        className={`grid hover:bg-blue-500 hover:text-white  place-items-center h-7 w-7 rounded-lg bg-slate-50 disabled:bg-slate-200 disabled:hover:bg-blue-500 disabled:cursor-not-allowed shadow-lg`}
         onClick={handlePage}
       >
         {children}

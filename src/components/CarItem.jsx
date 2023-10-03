@@ -10,12 +10,11 @@ import { GiSteeringWheel } from "react-icons/gi";
 import { LuFuel } from "react-icons/lu";
 import { AiOutlineHeart } from "react-icons/ai";
 
-function CarItem() {
-  const { cars, totalCars } = useSelector((state) => state.cars);
+function CarItem({ cars }) {
   const { q } = useSelector((state) => state.search);
 
   return (
-    <section className="flex flex-col gap-y-7 pb-7">
+    <section className="flex flex-col gap-y-7 px-7 py-5">
       <SearchBar />
       {/* Cars Container */}
       <div
@@ -23,7 +22,7 @@ function CarItem() {
           cars.length !== 0 && "grid-cols-3"
         } text-gray-600 justify-center gap-7`}
       >
-        {cars.length === 0 && (
+        {q !== "" && cars.length === 0 && (
           <h2 className="text-xl font-bold">No Cars found related to {q}</h2>
         )}
 
@@ -42,12 +41,12 @@ function CarItem() {
           return (
             <div
               key={id}
-              className="shadow-lg pt-3 px-3 max-w-lg mx-auto rounded-3xl bg-gray-100"
+              className="shadow-lg pt-3 px-3 w-[23rem] mx-auto rounded-3xl bg-gray-100"
             >
               <Image
                 height={200}
                 width={200}
-                className="hover:scale-[1.029] transition-transform ease-in-out duration-300 h-72 w-full bg-blue-50 rounded-3xl object-cover bg-center bg-no-repeat"
+                className="hover:scale-[1.029] transition-transform ease-in-out duration-300 h-64 w-full bg-blue-50 rounded-3xl object-cover bg-center bg-no-repeat"
                 src={imgUrl}
                 alt={title}
                 loading="lazy"
@@ -55,13 +54,13 @@ function CarItem() {
 
               <div className="p-5 flex flex-col gap-y-4">
                 <div className="flex justify-between space-x-2  items-center font-semibold">
-                  <h1 className="text-2xl  ">{title}</h1>
+                  <h1 className="text-2xl">{title.slice(0, 16) + "..."}</h1>
                   <h3 className="text-base border-4 border-blue-400 border-dotted rounded-3xl px-4">
                     {modelYear}
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   <IconWithName
                     icon={<MdPeople />}
                     name={`${seatingCapacity} people`}
@@ -90,7 +89,7 @@ function CarItem() {
 
                   <button
                     type="button"
-                    className="text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full px-5 py-2 text-center text-sm"
+                    className="text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full px-3 py-2 text-center text-sm"
                   >
                     Rent Now
                   </button>
@@ -100,7 +99,7 @@ function CarItem() {
           );
         })}
       </div>
-      {totalCars && cars.length !== 0 && <PaginationInfo />}
+      {cars.length !== 0 && <PaginationInfo />}
     </section>
   );
 }
