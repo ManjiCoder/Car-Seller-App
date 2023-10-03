@@ -1,12 +1,12 @@
-import fs from "node:fs/promises";
+import fs from "fs";
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   // For invalid method
   if (req.method !== "GET") {
     res.status(400).json({ error: "Not allowed" });
   }
   // Read the JSON data from the file
-  let carsData = await fs.readFile("data/cars.json", "utf-8");
+  let carsData = fs.readFileSync("data/cars.json", "utf-8");
   carsData = JSON.parse(carsData);
 
   // Define the number of cars to display per page
